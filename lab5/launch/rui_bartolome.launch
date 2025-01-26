@@ -1,0 +1,13 @@
+<launch>
+    <!-- Launch the TurtleSim node -->
+    <node name="turtlesim_node" pkg="turtlesim" type="turtlesim_node" output="screen" required="true" />
+
+    <!-- Move turtle to corner -->
+    <node pkg="rosservice" type="rosservice" name="rosservice" args="call --wait /turtle1/teleport_absolute '{x: 1.0, y: 1.0, theta: 1.57}'" />
+
+    <!-- Start drawing -->
+    <node pkg="rosservice" type="rosservice" name="rosservice_1" args="call --wait /clear" />
+
+    <!-- Launch the TurtleMouse node -->
+    <node name="lab5_node" pkg="lab5" type="lab5_node" output="screen" />
+</launch>

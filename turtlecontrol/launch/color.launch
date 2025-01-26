@@ -1,0 +1,10 @@
+<launch>
+    <!-- a basic node -->
+    <node name="turtlesim_node" pkg="turtlesim" type="turtlesim_node" />
+    <node ns="turtle1" name="listener" pkg="turtlecontrol" type="color_class.py" output="screen" />
+
+    <group ns="turtle1">
+        <remap from="color" to="color_sensor" />
+    </group>
+
+</launch>

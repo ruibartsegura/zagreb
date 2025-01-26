@@ -1,0 +1,11 @@
+<launch>
+    <!-- a basic node -->
+    <node name="turtlesim_node" pkg="turtlesim" type="turtlesim_node" />
+    <node ns="turtle1" name="listener" pkg="turtlecontrol" type="sub.py" output="screen" />
+   
+    <group ns="turtle1">
+        <remap from="cmd_vel" to="cmd_vel" />
+        <node pkg="turtlecontrol" type="pub.py" name="talker" respawn="true" />
+    </group>
+
+</launch>

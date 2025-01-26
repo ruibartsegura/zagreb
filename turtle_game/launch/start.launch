@@ -1,0 +1,9 @@
+<launch>
+  <node pkg="turtlesim" type="turtlesim_node" name="sim"/>
+  
+  <node pkg="turtlesim" type="turtle_teleop_key" name="teleop" output="screen"/>
+  
+  <node name="game" pkg="turtle_game" type="turtle_game_node" output="screen">
+      <rosparam command="load" file="$(find turtle_game)/config/PI.yaml"/>
+  </node>
+</launch>

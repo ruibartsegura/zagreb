@@ -1,0 +1,9 @@
+<launch>
+    <!-- a basic node -->
+    <node name="turtlesim_node" pkg="turtlesim" type="turtlesim_node" />
+   
+    <node ns="turtle1" name="listener" pkg="turtlecontrol" type="ex_class.py" output="screen" />
+    <remap from="pose" to="pose" />
+
+
+</launch>

@@ -1,0 +1,9 @@
+# Proportional parameters 
+Kp_v: 1.0
+Kp_theta: 2.0
+
+#Integral parameters
+Ki_v: 0.03
+Ki_theta: 0.03
+
+threshold: 0.35

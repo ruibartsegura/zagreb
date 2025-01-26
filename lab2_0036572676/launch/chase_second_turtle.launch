@@ -1,0 +1,24 @@
+<launch>
+    <!-- Launch the TurtleSim node -->
+    <node name="turtlesim_node" pkg="turtlesim" type="turtlesim_node" output="screen" required="true" />
+
+    <!-- Spawn the second turtle -->
+    <node pkg="rosservice" type="rosservice" name="rosservice" args="call --wait /spawn '{x: 2.0, y: 2.0, theta: 0.0, name: 'turtle2'}'" />
+
+    <!-- Launch the teleop node for controlling turtle2 -->
+    <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen" required="true">
+        <remap from="cmd_vel" to="/turtle2/cmd_vel" />
+    </node>
+
+    <!-- Launch the TurtleChaserController node -->
+    <node name="turtle_chaser_controller" pkg="lab2_0036572676" type="turtle_chaser_controller_node.py" output="screen">
+        <!-- Set gain parameters for a slower turtle chaser -->
+        <param name="forward_gain" value="1.0" />
+        <param name="angular_gain" value="2.0" />
+
+        <!-- Remap topics -->
+        <remap from="turtle_pose" to="/turtle1/pose" />
+        <remap from="mouse_pose" to="/turtle2/pose" />
+        <remap from="cmd_vel" to="/turtle1/cmd_vel" />
+    </node>
+</launch>

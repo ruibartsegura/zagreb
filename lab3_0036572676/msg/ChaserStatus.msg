@@ -1,0 +1,2 @@
+float64 distance_travelled
+float64 distance_to_target

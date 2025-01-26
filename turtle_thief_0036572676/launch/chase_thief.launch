@@ -1,0 +1,23 @@
+<launch>
+    <!-- Launch the TurtleSim node -->
+    <node name="turtlesim_node" pkg="turtlesim" type="turtlesim_node" output="screen" required="true" />
+
+    <!-- Launch the TurtleMouse node -->
+    <node name="turtle_thief_node" pkg="turtle_thief_0036572676" type="turtle_thief_node.py" output="screen">
+        <!-- Remap topics -->
+        <remap from="pose" to="/turtle1/pose" />
+    </node>
+
+    <!-- Launch the TurtleChaserController node -->
+    <!-- Launch the TurtleChaserController node -->
+    <node name="turtle_chaser_controller_node" pkg="turtle_thief_0036572676" type="turtle_chaser_controller_node.py" output="screen">
+        <!-- Set gain parameters for a faster turtle -->
+        <param name="forward_gain" value="5" />
+        <param name="angular_gain" value="10" />
+
+        <!-- Remap topics -->
+        <remap from="turtle_pose" to="/turtle1/pose" />
+        <remap from="mouse_pose" to="/thief_target" />
+        <remap from="cmd_vel" to="/turtle1/cmd_vel" />
+    </node>
+</launch>
